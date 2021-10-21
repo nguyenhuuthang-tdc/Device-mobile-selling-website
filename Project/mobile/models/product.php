@@ -36,7 +36,7 @@ class Product extends Db{
     } 
     //lay san pham thong qua id, dung o insertcard
     function getProductCartById($id){
-        $sql = "SELECT * FROM products WHERE id = $id";
+        $sql = 'SELECT * FROM products WHERE id = ' . $id;
         $item = mysqli_query(self::$connection,$sql); 
         $item1 = mysqli_fetch_assoc($item);
         return $item1;
@@ -51,7 +51,7 @@ class Product extends Db{
     //xuat san pham thong qua hang, gioi han 3 san pham 1 trang
     function findProductByFactureName($current_page,$perpage,$key){  
         $firstLink = (($current_page - 1) * $perpage);       
-        $sql = self::$connection->prepare("SELECT * FROM `products`,`manufactures` WHERE products.manu_id = manufactures.manu_id AND manufactures.manu_name LIKE '%$key%' LIMIT $firstLink,$perpage");
+        $sql = self::$connection->prepare("SELECT * FROM `products`,`manufactures` WHERE products.manu_id = manufactures.manu_id AND manufactures.manu_name LIKE '%$key%'");
         $sql->execute();
         $items = array();
         $items = $sql->get_result()->fetch_all(MYSQLI_ASSOC);

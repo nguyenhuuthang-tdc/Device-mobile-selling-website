@@ -92,7 +92,7 @@
 		if(isset($_POST['name']) && isset($_POST['password']) && $_POST['role'])
 		{
 			$username = $_POST['name'];	
-			$password = md5($_POST['password']);
+			$password = $_POST['password'];
 			$role = $_POST['role'];
 			$user->Register($username,$password,$role);
 		}
